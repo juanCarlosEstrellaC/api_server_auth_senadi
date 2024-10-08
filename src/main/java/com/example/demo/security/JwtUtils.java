@@ -11,11 +11,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtUtils {
 
-	@Value("${app.jwtSemilla}")
-	private String jwtSemilla;
-
-	@Value("${app.jwtExpirationMs}")
-	private int jwtExpirationMs;
+    private long jwtExpirationMs = 31536000000L; // 1 año en milisegundos
 
 	public String buildTokenJwt(String nombre) {
 		return Jwts.builder().setSubject(nombre).setSubject("Hola mundo").setIssuedAt(new Date())
